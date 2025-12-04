@@ -1,0 +1,4 @@
+STUDENT,1,password1,student1@gmail.com,2006,19,2025-12-01,30
+STUDENT,2,password2 ,student2@gmail.com,2009,16,2025-12-02,30
+STUDENT,3,password3 ,student3@gmail.com,2010,15,2025-12-03,30
+TEACHER,4,password4,teacher4@gmail.com,80,7000,2025-12-04,true

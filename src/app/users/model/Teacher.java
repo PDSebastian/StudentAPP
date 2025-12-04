@@ -1,8 +1,6 @@
-package app.users;
+package app.users.model;
 
-import java.awt.image.BufferedImage;
 import java.time.LocalDate;
-import java.util.Locale;
 
 public class Teacher extends User{
     private boolean titualar;
@@ -18,14 +16,15 @@ public class Teacher extends User{
         this.titualar = builder.titualar;
 
 
+
     }
     public Teacher(String text){
         super(text);
         String [] proprietati = text.split(",");
-        this.norma = Integer.parseInt(proprietati[7]);
-        this.salariu = Double.parseDouble(proprietati[8]);
-        this.dataAngajarii = LocalDate.parse(proprietati[9]);
-        this.titualar = Boolean.parseBoolean(proprietati[10]);
+        this.norma = Integer.parseInt(proprietati[4]);
+        this.salariu = Double.parseDouble(proprietati[5]);
+        this.dataAngajarii = LocalDate.parse(proprietati[6]);
+        this.titualar = Boolean.parseBoolean(proprietati[7]);
 
 
     }
@@ -95,6 +94,7 @@ public class Teacher extends User{
         public Teacher build(){
             return new Teacher(this);
         }
+
 
 
 

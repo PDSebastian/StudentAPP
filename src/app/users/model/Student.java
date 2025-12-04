@@ -1,4 +1,4 @@
-package app.users;
+package app.users.model;
 
 import java.time.LocalDate;
 
@@ -17,18 +17,18 @@ public class Student extends User{
     }
     public Student(String text) {
         super(text);
-        String[] properties =text.split(" ; ");
-        this.anul = Integer.parseInt(properties[3]);
-        this.varsta = Integer.parseInt(properties[4]);
-        this.dataInscrierii = LocalDate.parse(properties[5]);
-        this.minimCredite = Boolean.parseBoolean(properties[6]);
+        String[] properties =text.split(",");
+        this.anul = Integer.parseInt(properties[4]);
+        this.varsta = Integer.parseInt(properties[5]);
+        this.dataInscrierii = LocalDate.parse(properties[6]);
+        this.minimCredite = Boolean.parseBoolean(properties[7]);
 
     }
 
 
     @Override
     public String toString() {
-        return "Anul: "+anul+" Varsta: "+varsta+ "DataInscrierii: "+dataInscrierii.toString()+"minimCredite: "+minimCredite;
+        return "Student Anul: "+anul+" Varsta: "+varsta+ "DataInscrierii: "+dataInscrierii.toString()+" minimCredite: "+minimCredite;
     }
     @Override
     public boolean equals(Object o) {

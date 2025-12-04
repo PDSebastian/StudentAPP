@@ -1,6 +1,4 @@
-package app.users;
-
-import java.util.Locale;
+package app.users.model;
 
 public class User  implements Comparable<User>{
 
@@ -18,9 +16,9 @@ public class User  implements Comparable<User>{
   //todo:"id,password,email"
   public User(String text){
       String[] proprietati = text.split(",");
-      this.id=proprietati[0];
-      this.password=proprietati[1];
-      this.email=proprietati[2];
+      this.id=proprietati[1];
+      this.password=proprietati[2];
+      this.email=proprietati[3];
   }
 
     @Override
