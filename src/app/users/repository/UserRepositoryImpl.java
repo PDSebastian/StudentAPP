@@ -7,6 +7,7 @@ import app.users.model.User;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class UserRepositoryImpl implements UsersRepository {
@@ -54,5 +55,46 @@ public class UserRepositoryImpl implements UsersRepository {
     public List<User> findAll() {
         return users;
     }
+
+    @Override
+    public boolean findByEmail(String email) {
+        return this.users.stream().filter(us->us.getEmail().equals(email)).findFirst().isPresent();
+    }
+
+
+
+    @Override
+    public User register(User user) {
+        if(findByEmail(user.getEmail())){
+            System.out.println("Email"+user.getEmail()+" already exists");
+            return user;
+        }
+        users.add(user);
+        System.out.println("User"+user.getEmail()+" registered successfully");
+        return user;
+    }
+
+    @Override
+    public void authenticate(String email, String password) {
+        Optional<User> user = this.users.stream().filter(us->us.getEmail().equals(email)).findFirst();
+        if(user.isEmpty()){
+            System.out.println("User"+email+" not found");
+        }
+        User u=user.get();
+        if(u.getPassword().equals(password)){
+            System.out.println("User"+email+" authenticated successfully");
+        }
+        else{
+            System.out.println("Wrong password");
+        }
+
+    }
+
+    @Override
+    public User deleteUser(User user) {
+        users.remove(user);
+        return user;
+    }
+
 
 }

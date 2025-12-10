@@ -1,1 +1,3 @@
-BOOK,Harap-Alb,Ion Creanga,01,01,2025-12-01
+Harap-Alb,Ion Creanga,01,02,2025-12-01
+Enigma Otiliei,George Calinescu,15,03,1938-11-30
+Baltagul,Mihail Sadoveanu,22,11,1930-10-15

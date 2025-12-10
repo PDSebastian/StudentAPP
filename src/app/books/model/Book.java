@@ -1,7 +1,5 @@
 package app.books.model;
 
-import app.users.model.User;
-
 import java.time.LocalDate;
 
 public class Book{
@@ -15,11 +13,12 @@ public class Book{
 
     public  Book (String text){
         String[] split = text.split(",");
-        name = split[1];
-        author = split[2];
-        idBook = Integer.parseInt(split[3]);
-        idStudent = Integer.parseInt(split[4]);
-        publishDate = LocalDate.parse(split[5]);
+        name = split[0];
+        this.author = split[1];
+        idBook = Integer.parseInt(split[2]);
+        idStudent = Integer.parseInt(split[3]);
+        publishDate = LocalDate.parse(split[4]);
+
 
     }
 
@@ -31,6 +30,17 @@ public class Book{
         this.publishDate = builder.publishDate;
 
     }
+    public int  getIdBook() {
+        return idBook;
+    }
+    int getIdStudent() {
+        return idStudent;
+    }
+    public int setIDBook(int idBook) {
+        this.idBook = idBook;
+        return idBook;
+    }
+
     public String toString(){
         return "Book: name "+name+" author"+author+" idBook"+idBook+" publishDate"+publishDate;
     }
