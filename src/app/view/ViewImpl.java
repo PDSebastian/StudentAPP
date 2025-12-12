@@ -14,10 +14,11 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class ViewImpl implements View {
-    UserQueryService userQueryService;
+   private UserQueryService userQueryService;
     UserComandServiceImpl userComandService;
     BookQueryService bookQueryService;
     BookComandService bookComandService;
+    private  User user;
 
     public ViewImpl() {
         this.userQueryService=new UserQueryServiceImpl();
@@ -31,8 +32,6 @@ public class ViewImpl implements View {
         System.out.println("2.Carti imprumutate ");
         System.out.println("3.Afisare nr de carti imprumutate ");
         System.out.println("4.Afisare toate cartiile imprumutate ");
-
-
 
 
     }
@@ -56,7 +55,7 @@ public class ViewImpl implements View {
                            ctBorroedBooks();
                            break;
                            case "4":
-                               showAllBorroedBooks();
+                               showAllBorrowedBooks();
                                break;
 
                }
@@ -104,11 +103,10 @@ public class ViewImpl implements View {
             System.out.println("Nu exista carti imprumutate ");
         }
    }
-   void showAllBorroedBooks(){
+   void showAllBorrowedBooks(){
         bookQueryService.showAllBorrowedBooks();
 
    }
-
 
 
 

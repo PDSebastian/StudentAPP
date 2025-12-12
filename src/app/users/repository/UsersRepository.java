@@ -3,14 +3,15 @@ package app.users.repository;
 import app.users.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UsersRepository {
 
     List<User> findAll();
-    boolean findByEmail(String email);
-    User register(User user);
-    User authenticate(String email, String password);
-    User deleteUser(User user);
+    Optional<User> findByEmail(String email);
+    Optional<User> register(User user);
+   Optional<User> authenticate(String email, String password);
+    Optional<User> deleteUser(User user);
     List<User> viewUser();
 
 }

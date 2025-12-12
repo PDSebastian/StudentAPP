@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class UserRepositoryImpl implements UsersRepository {
 
+
     private List<User> users;
 
     public UserRepositoryImpl() {
@@ -56,41 +57,43 @@ public class UserRepositoryImpl implements UsersRepository {
     }
 
     @Override
-    public boolean findByEmail(String email) {
-        return this.users.stream().filter(us->us.getEmail().equals(email)).findFirst().isPresent();
+    public Optional<User> findByEmail(String email) {
+        return users.stream().filter(user -> user.getEmail().equals(email)).findFirst();
     }
 
     @Override
-    public User register(User user) {
-        if(findByEmail(user.getEmail())){
-            System.out.println("Email"+user.getEmail()+" already exists");
-            return user;
+    public Optional<User> register(User user) {
+     Optional<User> u = this.findByEmail(user.getEmail());
+     if(u.isPresent()){
+         System.out.println("User already exists");
+     }
+     else{
+         this.users.add(user);
+     }
+     return Optional.of(user);
+    }
+
+    @Override
+    public Optional<User> authenticate(String email, String password) {
+        Optional<User> user = findByEmail(email);
+        if(user.filter(u->u.getPassword().equals(password)).isPresent() ) {
+           System.out.println("User authenticated");
+
         }
-        users.add(user);
-        System.out.println("User"+user.getEmail()+" registered successfully");
         return user;
-    }
 
-    @Override
-    public User authenticate(String email, String password) {
-        Optional<User> user = this.users.stream().filter(us->us.getEmail().equals(email)).findFirst();
-        if(user.isEmpty()){
-            System.out.println("User"+email+" not found");
-        }
-        User u=user.get();
-        if(u.getPassword().equals(password)){
-            System.out.println("User"+email+" authenticated successfully");
-        }
-        else{
-            System.out.println("Wrong password");
-        }
 
-        return u;
     }
     @Override
-    public User deleteUser(User user) {
-        users.remove(user);
-        return user;
+    public Optional<User> deleteUser(User user) {
+        Optional<User> optionalUser = this.users.stream().filter(us->us.getEmail().equals(user.getEmail())).findFirst();
+        if(optionalUser.isPresent()){
+            this.users.remove(optionalUser.get());
+        }
+        return Optional.of(user);
+
+
+
     }
 
     @Override
