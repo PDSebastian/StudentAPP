@@ -8,4 +8,5 @@ public class UserAlreadyExistException extends Exception {
         super(UsersConstants.USER_ALREADY_EXIST_EXCEPTION_MESSAGE);
     }
 
+
 }

@@ -1,6 +1,8 @@
 package app.users.service;
 
 import app.users.exceptions.UserAlreadyExistException;
+import app.users.exceptions.UserAlreadyHasBeenDeletedException;
+import app.users.exceptions.UserHasAlreadyBeenauthenticatedException;
 import app.users.model.User;
 import app.users.repository.UserRepositoryImpl;
 import app.users.repository.UsersRepository;
@@ -27,15 +29,23 @@ public class UserComandServiceImpl implements UserCommandService{
 
 
     @Override
-    public User deleteUser(User user) {
+    public User deleteUser(User user) throws UserAlreadyHasBeenDeletedException {
        Optional<User>u= usersRepository.deleteUser(user);
-       return u.get();
+      if(u.isPresent()){
+          return u.get();
+      }else{
+          throw  new UserAlreadyHasBeenDeletedException();
+      }
     }
 
     @Override
-    public User autenticate(String email, String password) {
+    public User autenticate(String email, String password) throws UserHasAlreadyBeenauthenticatedException {
         Optional<User>u=usersRepository.authenticate(email, password);
-        return u.get();
+       if(u.isPresent()){
+           return u.get();
+       }else{
+           throw new UserHasAlreadyBeenauthenticatedException();
+       }
     }
 
 }
