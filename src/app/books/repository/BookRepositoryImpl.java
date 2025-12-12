@@ -16,7 +16,6 @@ public class BookRepositoryImpl implements BookRepository {
         this.loadBooks();
 
     }
-
     void loadBooks() {
         try{
             Scanner sc =new  Scanner(new File("C:\\Users\\adria\\Desktop\\mycode\\java-basics\\StudentAPP\\src\\app\\books\\data\\book.txt"));
@@ -71,6 +70,10 @@ public class BookRepositoryImpl implements BookRepository {
         return books.stream().filter(books-> books.getIdBook()==id).findFirst().orElse(null);
     }
 
+    @Override
+    public List<Book> viewBooks() {
+        return books;
+    }
 
 
 }

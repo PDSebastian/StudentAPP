@@ -9,6 +9,8 @@ public interface UsersRepository {
     List<User> findAll();
     boolean findByEmail(String email);
     User register(User user);
-    void authenticate(String email, String password);
+    User authenticate(String email, String password);
     User deleteUser(User user);
+    List<User> viewUser();
+
 }

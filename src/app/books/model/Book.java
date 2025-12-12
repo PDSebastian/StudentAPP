@@ -9,7 +9,9 @@ public class Book{
      int idStudent;
      LocalDate publishDate;
 
-
+    public String getName(){
+        return name;
+    }
 
     public  Book (String text){
         String[] split = text.split(",");
@@ -33,9 +35,10 @@ public class Book{
     public int  getIdBook() {
         return idBook;
     }
-    int getIdStudent() {
+    public int getIDStudent() {
         return idStudent;
     }
+
     public int setIDBook(int idBook) {
         this.idBook = idBook;
         return idBook;
@@ -107,6 +110,7 @@ public class Book{
         public Book build() {
             return new Book(this);
         }
+
 
     }
 

@@ -19,7 +19,6 @@ public class UserRepositoryImpl implements UsersRepository {
         this.loadUsers();
     }
 
-
     private void loadUsers() {
 
         try{
@@ -61,8 +60,6 @@ public class UserRepositoryImpl implements UsersRepository {
         return this.users.stream().filter(us->us.getEmail().equals(email)).findFirst().isPresent();
     }
 
-
-
     @Override
     public User register(User user) {
         if(findByEmail(user.getEmail())){
@@ -75,7 +72,7 @@ public class UserRepositoryImpl implements UsersRepository {
     }
 
     @Override
-    public void authenticate(String email, String password) {
+    public User authenticate(String email, String password) {
         Optional<User> user = this.users.stream().filter(us->us.getEmail().equals(email)).findFirst();
         if(user.isEmpty()){
             System.out.println("User"+email+" not found");
@@ -88,12 +85,18 @@ public class UserRepositoryImpl implements UsersRepository {
             System.out.println("Wrong password");
         }
 
+        return u;
     }
-
     @Override
     public User deleteUser(User user) {
         users.remove(user);
         return user;
+    }
+
+    @Override
+    public List<User> viewUser() {
+        return users;
+
     }
 
 

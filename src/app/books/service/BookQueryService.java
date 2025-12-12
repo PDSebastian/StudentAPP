@@ -8,5 +8,7 @@ import java.util.Optional;
 public interface BookQueryService {
     List<Book> findAllBooks();
     Optional<Book> findBookById(String bookId);
-
+    boolean borrowedBooks();
+    int countBorrowedBooks();
+    void showAllBorrowedBooks();
 }

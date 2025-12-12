@@ -32,6 +32,7 @@ public class Application {
         System.out.println("Apasati tasta 3 pentru a adauga o carte ");
 
 
+
     }
     public void app(){
 
@@ -49,11 +50,11 @@ public class Application {
                           afisareCarti();
                           break;
                           case "3":
-
+                            addNewBook();
+                            break;
 
 
                 }
-
 
 
             }
@@ -93,8 +94,11 @@ public class Application {
            }catch(NumberFormatException e){
                System.out.println(e.getMessage());
            }
-
+           System.out.println("Cartile dupa adaugare:");
+            afisareCarti();
         }
+
+
 
 
 

@@ -1,3 +1,8 @@
 Harap-Alb,Ion Creanga,01,02,2025-12-01
 Enigma Otiliei,George Calinescu,15,03,1938-11-30
 Baltagul,Mihail Sadoveanu,22,11,1930-10-15
+Mara,Ioan Slavici,30,00,1894-01-01
+Moara cu Noroc,Ioan Slavici,31,05,1881-06-05
+Padurea Spanzuratilor,Liviu Rebreanu,45,00,1922-03-20
+Cel mai iubit dintre pamanteni,Marin Preda,58,12,1980-08-10
+Perpessicius,Eminescu,60,00,1928-09-01

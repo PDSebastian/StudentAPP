@@ -2,13 +2,13 @@ package app.books.service;
 
 import app.books.model.Book;
 import app.books.repository.BookRepository;
+import app.books.repository.BookRepositoryImpl;
 
 public class BookComandServiceImpl implements BookComandService {
     private BookRepository bookRepository;
-    public BookComandServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public BookComandServiceImpl() {
+        this.bookRepository=new BookRepositoryImpl();
     }
-
     @Override
     public Book createBook(Book book) {
 

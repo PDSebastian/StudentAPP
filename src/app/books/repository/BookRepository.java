@@ -11,6 +11,6 @@ public interface BookRepository {
     int randomID();
     int generateID();
     Book getBookByID(int id);
-
+    List<Book> viewBooks();
 
 }
