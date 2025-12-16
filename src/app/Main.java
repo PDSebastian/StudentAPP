@@ -30,8 +30,8 @@ void main(String[] args) throws UserAlreadyExistException {
 ////    application.app();
 //
 //
-//    ViewImpl view = new ViewImpl();
-//    view.play();
+    ViewImpl view = new ViewImpl();
+    view.play();
 
     UserCommandService userCommandService=new UserComandServiceImpl() ;
     User u= new User("1","password1","student1@gmail.com");

@@ -9,4 +9,5 @@ public class UserHasAlreadyBeenauthenticatedException  extends Exception{
        super(UsersConstants.USER_ALREADY_HAS_BEEN_AUTHENTIFICATED);
     }
 
+
 }

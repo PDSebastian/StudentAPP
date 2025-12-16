@@ -32,6 +32,8 @@ public class ViewImpl implements View {
         System.out.println("2.Carti imprumutate ");
         System.out.println("3.Afisare nr de carti imprumutate ");
         System.out.println("4.Afisare toate cartiile imprumutate ");
+        System.out.println("5.Inrolare student la curs  ");
+        System.out.println("5.Retragere student de la curs  ");
 
 
     }
