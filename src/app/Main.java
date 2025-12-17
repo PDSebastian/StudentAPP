@@ -32,18 +32,18 @@ void main(String[] args) throws UserAlreadyExistException {
 //
     ViewImpl view = new ViewImpl();
     view.play();
-
-    UserCommandService userCommandService=new UserComandServiceImpl() ;
-    User u= new User("1","password1","student1@gmail.com");
-
-    try{
-        userCommandService.add(u);
-    }catch(UserAlreadyExistException e){
-
-        System.out.println(e.getMessage());
-    }
-
-    System.out.println("Test");
+//
+//    UserCommandService userCommandService=new UserComandServiceImpl() ;
+//    User u= new User("1","password1","student1@gmail.com");
+//
+//    try{
+//        userCommandService.add(u);
+//    }catch(UserAlreadyExistException e){
+//
+//        System.out.println(e.getMessage());
+//    }
+//
+//    System.out.println("Test");
 
 
 

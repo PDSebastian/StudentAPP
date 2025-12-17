@@ -4,6 +4,13 @@ import app.books.service.BookComandService;
 import app.books.service.BookQueryService;
 import app.books.service.BookComandServiceImpl;
 import app.books.service.BookQueryServiceImpl;
+import app.course.repository.CourseRepositoryImpl;
+import app.course.service.CourseComandServiceImpl;
+import app.course.service.CoursesQueryServiceImpl;
+import app.enrolment.exceptions.UserHasNotBeenAddedToCourseException;
+import app.enrolment.repository.EnrolmentRepositoryImpl;
+import app.enrolment.service.EnrolmentComandService;
+import app.enrolment.service.EnrolmentComandServiceImpl;
 import app.users.model.User;
 import app.users.service.UserQueryServiceImpl;
 import app.users.service.UserComandServiceImpl;
@@ -18,6 +25,7 @@ public class ViewImpl implements View {
     UserComandServiceImpl userComandService;
     BookQueryService bookQueryService;
     BookComandService bookComandService;
+    EnrolmentComandService enrolmentComandService;
     private  User user;
 
     public ViewImpl() {
@@ -25,6 +33,7 @@ public class ViewImpl implements View {
         this.userComandService=new UserComandServiceImpl();
         this.bookQueryService=new BookQueryServiceImpl();
         this.bookComandService=new BookComandServiceImpl();
+        this.enrolmentComandService = new EnrolmentComandServiceImpl(new EnrolmentRepositoryImpl(), this.userQueryService, this.userComandService, new CoursesQueryServiceImpl(new CourseRepositoryImpl()));
     }
 
     void meniu(){
@@ -33,7 +42,7 @@ public class ViewImpl implements View {
         System.out.println("3.Afisare nr de carti imprumutate ");
         System.out.println("4.Afisare toate cartiile imprumutate ");
         System.out.println("5.Inrolare student la curs  ");
-        System.out.println("5.Retragere student de la curs  ");
+        System.out.println("6.Retragere student de la curs  ");
 
 
     }
@@ -48,7 +57,7 @@ public class ViewImpl implements View {
                String line=sc.nextLine();
                switch (line){
                    case "1":
-                       loginUser("1student1@gmail.com","password1");
+                       loginUser("student1@gmail.com","password1");
                        break;
                    case "2":
                        showBooksUser();
@@ -59,7 +68,12 @@ public class ViewImpl implements View {
                            case "4":
                                showAllBorrowedBooks();
                                break;
-
+                               case "5":
+                                   enrolStudent();
+                                   break;
+                                case "6":
+                                    withdrawStudent();
+                                    break;
                }
            }
 
@@ -67,7 +81,7 @@ public class ViewImpl implements View {
     }
    void loginUser(String email,String password){
         try{
-            this.userComandService.autenticate(email,password);
+            this.user=this.userComandService.autenticate(email,password);
             System.out.println("Logare reusita");
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -107,6 +121,38 @@ public class ViewImpl implements View {
    }
    void showAllBorrowedBooks(){
         bookQueryService.showAllBorrowedBooks();
+
+   }
+   void enrolStudent(){
+        if(this.user==null){
+            System.out.println("Error: User is null");
+            return;
+        }
+        Scanner sc=new Scanner(System.in);
+        int courseID=Integer.parseInt(sc.nextLine());
+        try{
+            this.enrolmentComandService.addEnrolment(this.user,courseID);
+
+
+        } catch (UserHasNotBeenAddedToCourseException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+   }
+   void withdrawStudent(){
+        Scanner sc=new Scanner(System.in);
+        int courseID=Integer.parseInt(sc.nextLine());
+        try{
+            this.enrolmentComandService.removeEnrolment(this.user,courseID);
+
+
+        }catch (Exception e ){
+            System.out.println(e.getMessage());
+        }
+
+
+
 
    }
 

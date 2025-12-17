@@ -76,11 +76,10 @@ public class UserRepositoryImpl implements UsersRepository {
     @Override
     public Optional<User> authenticate(String email, String password) {
         Optional<User> user = findByEmail(email);
-        if(user.filter(u->u.getPassword().equals(password)).isPresent() ) {
-           System.out.println("User authenticated");
-
+        if(user.isPresent() && user.get().getPassword().trim().equals(password.trim())){
+            return user;
         }
-        return user;
+        return Optional.empty();
 
 
     }

@@ -8,4 +8,6 @@ public class UsersConstants {
     public static final String USER_ALREADY_HAS_BEEN_AUTHENTIFICATED ="User ALREADY AUTHENTIFICATED";
     public static final String USER_ALREADY_ADDED_TO_COURSE ="User HAS NOT BEEN ADDED TO COURSE" ;
     public static final String USER_ALREADY_REMOVED_FROM_COURSE = "USER HAS NOT BEEN REMOVED FROM  COURSE";
+    public static final String COURSE_HAS_ALREADY_BEEN_DELETED=" COURSE HAS ALREADY BEEN DELETED";
+    public static final String COURSE_ALREADY_EXISTS ="COURSE ALREADY EXISTS";
 }

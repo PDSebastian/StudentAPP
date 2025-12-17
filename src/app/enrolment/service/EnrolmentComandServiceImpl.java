@@ -1,11 +1,10 @@
 package app.enrolment.service;
 
+import app.course.service.CoursesQueryServiceImpl;
 import app.enrolment.exceptions.UserHasNotBeenAddedToCourseException;
 import app.enrolment.exceptions.UserHasNotBeenRemovedException;
 import app.enrolment.model.UserEnrolment;
-import app.enrolment.repository.EnrolmentRepositoryImpl;
 import app.enrolment.repository.EnromentRepository;
-import app.users.exceptions.UserAlreadyExistException;
 import app.users.model.User;
 import app.users.service.UserCommandService;
 import app.users.service.UserQueryService;
@@ -17,7 +16,7 @@ public class EnrolmentComandServiceImpl implements EnrolmentComandService {
     UserQueryService userQueryService;
     UserCommandService userCommandService;
 
-    public EnrolmentComandServiceImpl(EnromentRepository enrolmentRepository, UserQueryService userQueryService, UserCommandService userCommandService) {
+    public EnrolmentComandServiceImpl(EnromentRepository enrolmentRepository, UserQueryService userQueryService, UserCommandService userCommandService, CoursesQueryServiceImpl coursesQueryService) {
         this.userQueryService=userQueryService;
         this.userCommandService=userCommandService;
         this.enrolmentRepository=enrolmentRepository;

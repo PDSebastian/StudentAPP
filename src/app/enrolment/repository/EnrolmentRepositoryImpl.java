@@ -3,11 +3,16 @@ package app.enrolment.repository;
 import app.enrolment.model.UserEnrolment;
 import app.enrolment.service.EnrolmentComandService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class EnrolmentRepositoryImpl implements EnromentRepository {
     private List<UserEnrolment> userEnrolmentList;
+
+    public EnrolmentRepositoryImpl() {
+        this.userEnrolmentList=new ArrayList<>();
+    }
 
     @Override
     public Optional<UserEnrolment> findEnrolment(int studentID, int courseID) {

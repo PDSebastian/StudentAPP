@@ -5,13 +5,13 @@ import app.course.repository.Courserepository;
 import app.users.model.Student;
 
 public class Course implements Comparable<Course> {
-
-
-    public String name;
-   public String department;
+    int id;
+    String name;
+    String department;
 
 
     public Course(Builder builder) {
+        builder.id=this.id;
         builder.name = this.name;
         builder.department = this.department;
 
@@ -20,7 +20,7 @@ public class Course implements Comparable<Course> {
         String[] properties =text.split(",");
         this.name = properties[0];
         this.department = properties[1];
-
+        this.id = Integer.parseInt(properties[2]);
     }
 
 
@@ -30,7 +30,9 @@ public class Course implements Comparable<Course> {
     public String getDepartment() {
         return department;
     }
-
+    public int getId() {
+        return id;
+    }
     @Override
     public int compareTo(Course course) {
         return this.name.compareTo(course.name);
@@ -52,6 +54,7 @@ public class Course implements Comparable<Course> {
         return new Builder();
     }
     public static class Builder {
+        private int id;
         private String name;
         private String department;
 
@@ -61,6 +64,10 @@ public class Course implements Comparable<Course> {
         }
         public Builder department(String department) {
             this.department = department;
+            return this;
+        }
+        public Builder id(int id) {
+            this.id = id;
             return this;
         }
         public Course build() {
